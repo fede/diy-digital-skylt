@@ -1,2 +1,0 @@
-# Main dependencies for the e-Paper Python code
-Pillow
