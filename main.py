@@ -88,7 +88,7 @@ def draw_buses(draw, buses):
             (row_left + BUS_RECT_W, row_bottom)
         ], fill="black")
         bus_num = str(bus["number"])
-        bbox_num = FONT_LARGE.getbbox(bus_num)
+        bbox_num = FONT_BOLD_LARGE.getbbox(bus_num)
         w_num, h_num = bbox_num[2] - bbox_num[0], bbox_num[3] - bbox_num[1]
         num_x = row_left + (BUS_RECT_W - w_num) // 2
         num_y = row_top + (BUS_RECT_H - h_num) // 2
@@ -104,12 +104,12 @@ def draw_buses(draw, buses):
             time_str = f"{bus['minutes']}"
         else:
             time_str = bus["time"]
-        bbox_time = FONT_BOLD_SMALL.getbbox(time_str)
+        bbox_time = FONT_BOLD_LARGE.getbbox(time_str)
         w_time = bbox_time[2] - bbox_time[0]
         h_time = bbox_time[3] - bbox_time[1]
         time_x = row_right - w_time
         time_y = row_top + (BUS_RECT_H - h_time) // 2
-        draw.text((time_x, time_y), time_str, fill="black", font=FONT_BOLD_SMALL)
+        draw.text((time_x, time_y), time_str, fill="black", font=FONT_BOLD_LARGE)
 
         y += BUS_RECT_H + BUS_SPACING + 15
 
