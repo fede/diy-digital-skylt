@@ -25,7 +25,7 @@ DUMP_BMP_PATH = "/tmp/dump.bmp"
 def fetch_api_response():
     headers = {"Authorization": f"Bearer {API_KEY}"}
     try:
-        response = requests.get(API_URL, headers=headers, timeout=10)
+        response = requests.get(API_URL, headers=headers, timeout=20)
         response.raise_for_status()
         return response.json()
     except Exception as e:
