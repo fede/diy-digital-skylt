@@ -10,8 +10,8 @@ from caldav import DAVClient
 
 load_dotenv()
 
-WEATHER_API_URL = f"{os.getenv("WEATHER_API_URL")}?latitude={os.getenv("WEATHER_LAT")}&longitude={os.getenv("WEATHER_LONG")}&hourly=temperature_2m,wind_speed_10m,precipitation_probability&forecast_days=2"
-PUBLIC_TRANSPORT_API_URL = f"{os.getenv("PUBLIC_TRANSPORT_API_URL")}/{os.getenv("PUBLIC_TRANSPORT_STATION_ID")}?key={os.getenv("PUBLIC_TRANSPORT_API_KEY")}"
+WEATHER_API_URL = f"{os.getenv('WEATHER_API_URL')}?latitude={os.getenv('WEATHER_LAT')}&longitude={os.getenv('WEATHER_LONG')}&hourly=temperature_2m,wind_speed_10m,precipitation_probability&forecast_days=2"
+PUBLIC_TRANSPORT_API_URL = f"{os.getenv('PUBLIC_TRANSPORT_API_URL')}/{os.getenv('PUBLIC_TRANSPORT_STATION_ID')}?key={os.getenv('PUBLIC_TRANSPORT_API_KEY')}"
 CALENDAR_API_URL = os.getenv("CALENDAR_API_URL")
 CALENDAR_USERNAME = os.getenv("CALENDAR_USERNAME")
 CALENDAR_APP_PASSWORD = os.getenv("CALENDAR_APP_PASSWORD")
@@ -197,11 +197,13 @@ def process_next_event(api_response):
     try:
         event_date_raw = api_response.vobject_instance.vevent.dtstart.value
         desc = api_response.vobject_instance.vevent.summary.value
+        # Handle escaped unicode (e.g., '\ud83d\udea2')
         if isinstance(desc, str) and '\\u' in desc:
             try:
                 desc = desc.encode('utf-8').decode('unicode_escape')
             except Exception:
                 pass
+        # Format event_date
         from datetime import datetime, timedelta
         if isinstance(event_date_raw, datetime):
             event_date_dt = event_date_raw.date()
@@ -241,13 +243,13 @@ class SimpleHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/":
             self._set_headers()
-            self.wfile.write(json.dumps({"success": True}, ensure_ascii=False).encode())
+            self.wfile.write(json.dumps({"success": True}).encode())
         elif self.path == "/display":
             self._set_headers()
-            self.wfile.write(json.dumps(get_display_data(), ensure_ascii=False).encode())
+            self.wfile.write(json.dumps(get_display_data()).encode())
         else:
             self._set_headers(404)
-            self.wfile.write(json.dumps({"error": "Not found"}, ensure_ascii=False).encode())
+            self.wfile.write(json.dumps({"error": "Not found"}).encode())
 
 if __name__ == "__main__":
     server_address = ('', int(os.getenv("PORT", 3000)))
