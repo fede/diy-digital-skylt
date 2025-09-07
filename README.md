@@ -14,7 +14,7 @@ All of this is shown on a 4.26-inch e-paper (e-ink) display, driven by a Raspber
 
 - Raspberry Pi Zero W v1
 - 4.26" e-paper display (Waveshare)
-- 3D-printed case ([Primtables model](https://www.printables.com/model/1408332-digital-skylt))
+- 3D-printed case ([Printables model](https://www.printables.com/model/1408332-digital-skylt))
 - Some soldering and assembly required!
 
 ## Software
