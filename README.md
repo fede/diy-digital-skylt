@@ -2,6 +2,8 @@
 
 This project is a personal script to power a small e-ink display at home. It was built for fun as a weekend project, and is not intended to be a polished product—just a useful and hackable tool!
 
+![Working digital sign](https://media.printables.com/media/prints/9bedc2fa-6c23-45ad-b755-586d454dae8b/images/10631876_3005836f-e381-4b29-b481-4a89298bab2e_e20a0b3a-d51b-42e3-8879-35abce522058/thumbs/inside/1920x1440/png/screenshot-2025-09-08-at-110744.webp)
+
 ## What does it do?
 
 - **Bus Departures:** Shows the next buses leaving from my local bus stop (using Sweden's Trafiklab API).
@@ -16,6 +18,7 @@ All of this is shown on a 4.26-inch e-paper (e-ink) display, driven by a Raspber
 - 4.26" e-paper display (Waveshare)
 - 3D-printed case ([Printables model](https://www.printables.com/model/1408332-digital-skylt))
 - Some soldering and assembly required!
+- Two M3 screws for assembling
 
 ## Software
 
